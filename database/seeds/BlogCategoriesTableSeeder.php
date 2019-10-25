@@ -30,6 +30,6 @@ class BlogCategoriesTableSeeder extends Seeder
                 'parent_id' => $parentId,
             ];
         }
-        \DB::table('blog_categories')->insert($categories);
+        DB::table('blog_categories')->insert($categories);
     }
 }

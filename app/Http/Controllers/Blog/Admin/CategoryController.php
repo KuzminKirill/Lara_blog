@@ -68,20 +68,22 @@ class CategoryController extends BaseController
         $item = BlogCategory::find($id);
         if (empty($item)) {
             return back()
-                ->withErrors(['msg'=> "Запись id=[{$id}] не найдена"])
+                ->withErrors(['msg' => "Запись id=[{$id}] не найдена"])
                 ->withInput();
         }
 
-        $data = $request->all();
-        $result = $item->fill($data)->save();
+        $data = $request->all(); //input
+        $result = $item
+            ->fill($data)
+            ->save();
 
-        if($result) {
+        if ($result) {
             return redirect()
                 ->route('blog.admin.categories.edit', $item->id)
-                ->with(['success' =>  'Успешно сохранено']);
+                ->with(['success' => 'Успешно сохранено']);
         } else {
             return back()
-                ->withErrors(['msg'=> 'Ошибка сохранения'])
+                ->withErrors(['msg' => 'Ошибка сохранения'])
                 ->withInput();
         }
 

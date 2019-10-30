@@ -58,8 +58,8 @@ class CategoryController extends BaseController
 
         if ($item) {
             return redirect()
-                ->route('blog.admin.categories.edit', [$item->id])
-                ->with(['siccess' => 'Успешно сохранено']);
+                ->route('blog.admin.categories.edit', $item->id)
+                ->with(['success' => 'Успешно сохранено']);
         } else {
             return back()
                 ->withErrors(['msg' => 'Ошибка сохранения'])
